@@ -69,9 +69,118 @@ function Heart({ colorScheme }) {
   );
 }
 
+function LockPage({ onBack }) {
+  const [code, setCode] = useState('');
+  const [showImage, setShowImage] = useState(false);
+
+  const handleNumberClick = (number) => {
+    if (code.length < 4) {
+      const newCode = code + number;
+      setCode(newCode);
+      
+      if (newCode.length === 4) {
+        // Check if code is correct (you can change this to any 4-digit code)
+        if (newCode === '1806') { // Anniversary code: 1806
+          setShowImage(true);
+        } else {
+          setCode('');
+          alert('Incorrect code! Try again.');
+        }
+      }
+    }
+  };
+
+  const handleClear = () => {
+    setCode('');
+  };
+
+  const handleBackspace = () => {
+    setCode(code.slice(0, -1));
+  };
+
+  if (showImage) {
+    return (
+      <div className="lock-page">
+        <div className="image-section">
+          <div className="couple-image">
+            <div className="image-placeholder">
+              <div className="image-text">Aiden & Lu</div>
+              <div className="image-subtext">Your beautiful photo here</div>
+            </div>
+          </div>
+        </div>
+        <div className="content-section">
+          <div className="success-message">
+            <h2>🎉 Congratulations!</h2>
+            <p>You unlocked our special memory!</p>
+            <button className="back-button" onClick={() => setShowImage(false)}>Try Another Code</button>
+            <button className="back-button" onClick={onBack}>Back to Home</button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="lock-page">
+      <div className="image-section">
+        <div className="couple-image">
+          <div className="image-placeholder">
+            <div className="image-text">Aiden & Lu</div>
+            <div className="image-subtext">Your beautiful photo here</div>
+          </div>
+        </div>
+      </div>
+      <div className="content-section">
+        <div className="bow-icon">🎀</div>
+        <h1 className="lock-title">Anniversary's Lock</h1>
+        <p className="lock-question">What is the anniversary date?</p>
+        
+        <div className="code-input">
+          <div className="lock-icon">🔒</div>
+          <div className="code-display">
+            {code.split('').map((digit, index) => (
+              <span key={index} className="code-digit">*</span>
+            ))}
+            {Array.from({ length: 4 - code.length }).map((_, index) => (
+              <span key={`empty-${index}`} className="code-digit empty">*</span>
+            ))}
+          </div>
+        </div>
+
+        <div className="keypad">
+          <div className="keypad-row">
+            <button onClick={() => handleNumberClick('1')}>1</button>
+            <button onClick={() => handleNumberClick('2')}>2</button>
+            <button onClick={() => handleNumberClick('3')}>3</button>
+          </div>
+          <div className="keypad-row">
+            <button onClick={() => handleNumberClick('4')}>4</button>
+            <button onClick={() => handleNumberClick('5')}>5</button>
+            <button onClick={() => handleNumberClick('6')}>6</button>
+          </div>
+          <div className="keypad-row">
+            <button onClick={() => handleNumberClick('7')}>7</button>
+            <button onClick={() => handleNumberClick('8')}>8</button>
+            <button onClick={() => handleNumberClick('9')}>9</button>
+          </div>
+          <div className="keypad-row">
+            <button onClick={handleClear} className="clear-btn">Clear</button>
+            <button onClick={() => handleNumberClick('0')}>0</button>
+            <button onClick={handleBackspace} className="backspace-btn">⌫</button>
+          </div>
+        </div>
+
+        <button className="back-button" onClick={onBack}>Back to Home</button>
+      </div>
+    </div>
+  );
+}
+
 function App() {
   const [colorScheme, setColorScheme] = useState('red');
   const [bgScheme, setBgScheme] = useState('rose');
+  const [showLockPage, setShowLockPage] = useState(false);
 
   const colorOptions = [
     { name: 'darkPink', label: 'Dark Pink', color: '#e91e63' },
@@ -97,6 +206,10 @@ function App() {
     return { background: selectedBg ? selectedBg.gradient : bgOptions[0].gradient };
   };
 
+  if (showLockPage) {
+    return <LockPage onBack={() => setShowLockPage(false)} />;
+  }
+
   return (
     <div className="App" style={getBackgroundStyle()}>
       <div className="anniversary-container">
@@ -104,7 +217,7 @@ function App() {
         
         <div className="content">
           <h1 className="anniversary-title">Welcome to Aiden and Lu's world</h1>
-          <button className="start-button">Start!</button>
+          <button className="start-button" onClick={() => setShowLockPage(true)}>Start!</button>
         </div>
       </div>
       
