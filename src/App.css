@@ -1,0 +1,323 @@
+.App {
+  text-align: center;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.5s ease;
+}
+
+.anniversary-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-text {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  z-index: 10;
+}
+
+.handwritten-text {
+  font-family: 'Brush Script MT', 'Segoe Script', cursive, serif;
+  font-size: 28px;
+  color: #fff5f5;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+  transform: rotate(-2deg);
+  animation: gentleFloat 4s ease-in-out infinite;
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: rotate(-2deg) translateY(0px); }
+  50% { transform: rotate(-2deg) translateY(-5px); }
+}
+
+.heart-container {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  margin: 40px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: gentleHeartbeat 3s ease-in-out infinite;
+}
+
+.heart-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 6px 16px rgba(216, 27, 96, 0.4));
+}
+
+@keyframes gentleHeartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+.content {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.anniversary-title {
+  font-size: 3.8rem;
+  font-weight: 400;
+  color: #fff5f5;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  margin: 0 0 40px 0;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  letter-spacing: 3px;
+  line-height: 1.2;
+  font-style: italic;
+  background: linear-gradient(45deg, #fff5f5, #ffe4e1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.anniversary-subtitle {
+  font-size: 1.3rem;
+  color: rgba(255, 245, 245, 0.95);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+  margin: 0 0 40px 0;
+  font-family: 'Arial', sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.start-button {
+  background: linear-gradient(45deg, #ff8a80, #ffab91);
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 400;
+  padding: 15px 35px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 138, 128, 0.4);
+  transition: all 0.3s ease;
+  font-family: 'Arial', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.start-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 138, 128, 0.5);
+  background: linear-gradient(45deg, #ffab91, #ff8a80);
+}
+
+.start-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(255, 138, 128, 0.3);
+}
+
+/* Color pickers */
+.color-picker {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  z-index: 10;
+}
+
+.heart-color-picker {
+  bottom: 30px;
+  right: 30px;
+}
+
+.bg-color-picker {
+  bottom: 30px;
+  left: 30px;
+}
+
+.color-picker-label {
+  color: #fff5f5;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  font-weight: 300;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.color-options {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.color-option {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.color-option:hover {
+  transform: scale(1.1);
+  border-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.color-option.active {
+  border-color: white;
+  transform: scale(1.15);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
+}
+
+/* Floating particles */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: floatParticle 6s ease-in-out infinite;
+}
+
+.particle-1 {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.particle-2 {
+  top: 60%;
+  left: 85%;
+  animation-delay: 1s;
+}
+
+.particle-3 {
+  top: 80%;
+  left: 20%;
+  animation-delay: 2s;
+}
+
+.particle-4 {
+  top: 30%;
+  left: 80%;
+  animation-delay: 3s;
+}
+
+.particle-5 {
+  top: 70%;
+  left: 15%;
+  animation-delay: 4s;
+}
+
+@keyframes floatParticle {
+  0%, 100% { 
+    transform: translateY(0px) translateX(0px) scale(1);
+    opacity: 0.6;
+  }
+  50% { 
+    transform: translateY(-20px) translateX(10px) scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .anniversary-title {
+    font-size: 2.8rem;
+  }
+  
+  .heart-container {
+    width: 220px;
+    height: 220px;
+  }
+  
+  .handwritten-text {
+    font-size: 24px;
+  }
+  
+  .anniversary-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .start-button {
+    font-size: 1rem;
+    padding: 12px 30px;
+  }
+  
+  .heart-color-picker {
+    bottom: 20px;
+    right: 20px;
+    padding: 12px;
+  }
+  
+  .bg-color-picker {
+    bottom: 20px;
+    left: 20px;
+    padding: 12px;
+  }
+  
+  .color-option {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .anniversary-title {
+    font-size: 2.3rem;
+  }
+  
+  .heart-container {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .anniversary-subtitle {
+    font-size: 1rem;
+  }
+  
+  .start-button {
+    font-size: 0.9rem;
+    padding: 10px 25px;
+  }
+  
+  .handwritten-text {
+    font-size: 20px;
+  }
+  
+  .heart-color-picker {
+    bottom: 15px;
+    right: 15px;
+    padding: 10px;
+  }
+  
+  .bg-color-picker {
+    bottom: 15px;
+    left: 15px;
+    padding: 10px;
+  }
+  
+  .color-option {
+    width: 22px;
+    height: 22px;
+  }
+}
