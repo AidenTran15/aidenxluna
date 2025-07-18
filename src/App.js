@@ -34,8 +34,12 @@ function Heart({ colorScheme }) {
         return { from: '#f8bbd9', to: '#f48fb1' };
       case 'deepCoral':
         return { from: '#ff5252', to: '#d32f2f' };
+      case 'darkPink':
+        return { from: '#e91e63', to: '#c2185b' };
+      case 'red':
+        return { from: '#f44336', to: '#d32f2f' };
       default:
-        return { from: '#d81b60', to: '#ad1457' };
+        return { from: '#e91e63', to: '#c2185b' };
     }
   };
 
@@ -66,22 +70,17 @@ function Heart({ colorScheme }) {
 }
 
 function App() {
-  const [colorScheme, setColorScheme] = useState('deepRose');
-  const [bgScheme, setBgScheme] = useState('sunset');
+  const [colorScheme, setColorScheme] = useState('red');
+  const [bgScheme, setBgScheme] = useState('rose');
 
   const colorOptions = [
-    { name: 'deepRose', label: 'Deep Rose', color: '#d81b60' },
+    { name: 'darkPink', label: 'Dark Pink', color: '#e91e63' },
+    { name: 'red', label: 'Red', color: '#f44336' },
     { name: 'softPink', label: 'Soft Pink', color: '#f8bbd9' },
-    { name: 'magenta', label: 'Magenta', color: '#e91e63' },
-    { name: 'peach', label: 'Peach', color: '#ffab91' },
-    { name: 'warmCoral', label: 'Warm Coral', color: '#ff7043' },
-    { name: 'deepCoral', label: 'Deep Coral', color: '#ff5252' },
-    { name: 'lavender', label: 'Lavender', color: '#e1bee7' },
-    { name: 'softPurple', label: 'Soft Purple', color: '#ba68c8' },
     { name: 'roseGold', label: 'Rose Gold', color: '#f8bbd9' },
-    { name: 'purple', label: 'Purple', color: '#9c27b0' },
-    { name: 'blue', label: 'Blue', color: '#2196f3' },
-    { name: 'teal', label: 'Teal', color: '#00bcd4' }
+    { name: 'magenta', label: 'Magenta', color: '#e91e63' },
+    { name: 'deepRose', label: 'Deep Rose', color: '#d81b60' }
+
   ];
 
   const bgOptions = [
