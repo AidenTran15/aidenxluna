@@ -100,23 +100,47 @@ function LockPage({ onBack }) {
 
   if (showImage) {
     return (
-      <div className="lock-page">
-        <div className="image-section">
-          <div className="couple-image">
-            <div className="image-placeholder">
-              <div className="image-text">Aiden & Lu</div>
-              <div className="image-subtext">Your beautiful photo here</div>
-            </div>
+      <div className="menu-page">
+        <div className="menu-header">
+          <h1 className="menu-title">Menu of Our Love</h1>
+          <div className="menu-subtitle">
+            <span className="heart-icon">❤️</span>
+            Together Forever
+            <span className="heart-icon">❤️</span>
           </div>
         </div>
-        <div className="content-section">
-          <div className="success-message">
-            <h2>🎉 Congratulations!</h2>
-            <p>You unlocked our special memory!</p>
-            <button className="back-button" onClick={() => setShowImage(false)}>Try Another Code</button>
-            <button className="back-button" onClick={onBack}>Back to Home</button>
+        
+        <div className="menu-grid">
+          <div className="menu-card">
+            <div className="card-icon">📷</div>
+            <h3 className="card-title">Our Memories ❤️</h3>
+            <p className="card-description">Every precious moment with you</p>
+            <div className="card-heart">💕</div>
+          </div>
+          
+          <div className="menu-card">
+            <div className="card-icon">🎁</div>
+            <h3 className="card-title">Love Calendar ❤️</h3>
+            <p className="card-description">Counting days of our love story</p>
+            <div className="card-heart">💕</div>
+          </div>
+          
+          <div className="menu-card">
+            <div className="card-icon">🧩</div>
+            <h3 className="card-title">Love Puzzle ❤️</h3>
+            <p className="card-description">Pieces of our journey together</p>
+            <div className="card-heart">💕</div>
+          </div>
+          
+          <div className="menu-card">
+            <div className="card-icon">💌</div>
+            <h3 className="card-title">Love Notes ❤️</h3>
+            <p className="card-description">Sweet messages from the heart</p>
+            <div className="card-heart">💕</div>
           </div>
         </div>
+        
+        <button className="back-button menu-back-button" onClick={onBack}>Back to Home</button>
       </div>
     );
   }
