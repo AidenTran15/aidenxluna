@@ -735,3 +735,273 @@
     font-size: 0.9rem;
   }
 }
+
+/* Love Calendar Page Styles */
+.love-calendar-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.calendar-header .handwritten-text {
+  font-family: 'Brush Script MT', 'Segoe Script', cursive, serif;
+  font-size: 1.2rem;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px;
+}
+
+.calendar-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #d32f2f;
+  margin: 0 0 15px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.thai-text {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.small-heart {
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+.calendar-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  width: 100%;
+}
+
+.profile-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-image {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.scood-banner {
+  position: absolute;
+  top: 10px;
+  background: #4caf50;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.couple-photo {
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+.love-counter {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(211, 47, 47, 0.1);
+  min-width: 600px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.counter-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 0;
+}
+
+.counter-item {
+  text-align: center;
+  flex: 1;
+  min-width: 70px;
+}
+
+.counter-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #d32f2f;
+  margin-bottom: 5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.counter-label {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 400;
+}
+
+.love-message {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.message-line {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.love-signature {
+  font-size: 1rem;
+  color: #d32f2f;
+  font-weight: 500;
+}
+
+.calendar-back-button {
+  background: linear-gradient(45deg, #ff8a80, #ffab91);
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 400;
+  padding: 15px 35px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 138, 128, 0.4);
+  transition: all 0.3s ease;
+  font-family: 'Arial', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.calendar-back-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 138, 128, 0.5);
+  background: linear-gradient(45deg, #ffab91, #ff8a80);
+}
+
+/* Responsive design for love calendar page */
+@media (max-width: 768px) {
+  .calendar-title {
+    font-size: 2.5rem;
+  }
+  
+  .profile-circle {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .profile-image {
+    width: 110px;
+    height: 110px;
+  }
+  
+  .counter-number {
+    font-size: 1.3rem;
+  }
+  
+  .counter-label {
+    font-size: 0.7rem;
+  }
+  
+  .love-counter {
+    padding: 20px;
+    min-width: 500px;
+    max-width: 600px;
+  }
+  
+  .counter-row {
+    gap: 8px;
+  }
+  
+  .counter-item {
+    min-width: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-title {
+    font-size: 2rem;
+  }
+  
+  .profile-circle {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .profile-image {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .scood-banner {
+    font-size: 0.6rem;
+    padding: 1px 6px;
+  }
+  
+  .couple-photo {
+    font-size: 0.8rem;
+  }
+  
+  .counter-number {
+    font-size: 1rem;
+  }
+  
+  .counter-label {
+    font-size: 0.6rem;
+  }
+  
+  .love-counter {
+    padding: 15px;
+    min-width: 400px;
+    max-width: 500px;
+  }
+  
+  .counter-row {
+    gap: 5px;
+  }
+  
+  .counter-item {
+    min-width: 40px;
+  }
+  
+  .message-line {
+    font-size: 1rem;
+  }
+  
+  .love-signature {
+    font-size: 0.9rem;
+  }
+}

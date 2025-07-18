@@ -72,6 +72,34 @@ function Heart({ colorScheme }) {
 function LockPage({ onBack }) {
   const [code, setCode] = useState('');
   const [showImage, setShowImage] = useState(false);
+  const [showLoveCalendar, setShowLoveCalendar] = useState(false);
+  const [timeSince, setTimeSince] = useState({ years: 0, months: 0, days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  // Calculate time since June 18, 2025
+  React.useEffect(() => {
+    const startDate = new Date('2025-06-18T00:00:00');
+    
+    const updateTime = () => {
+      const now = new Date();
+      const diff = now - startDate;
+      
+      if (diff > 0) {
+        const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+        const months = Math.floor((diff % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30.44));
+        const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        setTimeSince({ years, months, days, hours, minutes, seconds });
+      }
+    };
+    
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    
+    return () => clearInterval(interval);
+  }, []);
 
   const handleNumberClick = (number) => {
     if (code.length < 4) {
@@ -98,6 +126,62 @@ function LockPage({ onBack }) {
     setCode(code.slice(0, -1));
   };
 
+  if (showLoveCalendar) {
+    return (
+      <div className="love-calendar-page">
+        <div className="calendar-header">
+          <h1 className="calendar-title">Our Love Journey</h1>
+          <div className="small-heart">❤️</div>
+        </div>
+        
+        <div className="calendar-content">
+          <div className="profile-circle">
+            <div className="profile-image">
+              <div className="scood-banner">SCOOD</div>
+              <div className="couple-photo">Aiden & Lu</div>
+            </div>
+          </div>
+          
+          <div className="love-counter">
+            <div className="counter-row">
+              <div className="counter-item">
+                <div className="counter-number">{String(timeSince.years).padStart(2, '0')}</div>
+                <div className="counter-label">Year</div>
+              </div>
+              <div className="counter-item">
+                <div className="counter-number">{String(timeSince.months).padStart(2, '0')}</div>
+                <div className="counter-label">Month</div>
+              </div>
+              <div className="counter-item">
+                <div className="counter-number">{String(timeSince.days).padStart(2, '0')}</div>
+                <div className="counter-label">Days</div>
+              </div>
+              <div className="counter-item">
+                <div className="counter-number">{String(timeSince.hours).padStart(2, '0')}</div>
+                <div className="counter-label">Hours</div>
+              </div>
+              <div className="counter-item">
+                <div className="counter-number">{String(timeSince.minutes).padStart(2, '0')}</div>
+                <div className="counter-label">Minutes</div>
+              </div>
+              <div className="counter-item">
+                <div className="counter-number">{String(timeSince.seconds).padStart(2, '0')}</div>
+                <div className="counter-label">Seconds</div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="love-message">
+            <div className="message-line">We've been in love for..</div>
+            <div className="love-signature">❤️ love u 3000 no ❤️</div>
+          </div>
+        </div>
+        
+        <button className="back-button calendar-back-button" onClick={() => setShowLoveCalendar(false)}>Back to Menu</button>
+      </div>
+    );
+  }
+
   if (showImage) {
     return (
       <div className="menu-page">
@@ -118,7 +202,7 @@ function LockPage({ onBack }) {
             <div className="card-heart">💕</div>
           </div>
           
-          <div className="menu-card">
+          <div className="menu-card" onClick={() => setShowLoveCalendar(true)}>
             <div className="card-icon">🎁</div>
             <h3 className="card-title">Love Calendar ❤️</h3>
             <p className="card-description">Counting days of our love story</p>
