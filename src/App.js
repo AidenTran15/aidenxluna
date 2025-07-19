@@ -73,7 +73,73 @@ function LockPage({ onBack }) {
   const [code, setCode] = useState('');
   const [showImage, setShowImage] = useState(false);
   const [showLoveCalendar, setShowLoveCalendar] = useState(false);
+  const [showMemoryPage, setShowMemoryPage] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [timeSince, setTimeSince] = useState({ years: 0, months: 0, days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  // Array of all your uploaded images
+  const memoryImages = [
+    'IMG_9383.PNG',
+    'IMG_9382.PNG', 
+    'IMG_9032.PNG',
+    'IMG_9031.PNG',
+    'IMG_9029.PNG',
+    'IMG_9027.PNG',
+    'IMG_8805.PNG',
+    'IMG_8803.PNG',
+    'IMG_8785.PNG',
+    'IMG_8771.PNG',
+    'IMG_8715.PNG',
+    'IMG_8710.JPEG',
+    'IMG_8688.PNG',
+    'IMG_8670.PNG',
+    'IMG_8668.PNG',
+    'IMG_8667.PNG',
+    'IMG_8625.PNG',
+    'IMG_8621.PNG',
+    'IMG_8620.PNG',
+    'IMG_8617.PNG',
+    'IMG_8615.PNG',
+    'IMG_8584.PNG'
+  ];
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % memoryImages.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + memoryImages.length) % memoryImages.length);
+  };
+
+  // Touch/swipe functionality
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      nextImage();
+    }
+    if (isRightSwipe) {
+      prevImage();
+    }
+
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
 
   // Calculate time since June 18, 2025
   React.useEffect(() => {
@@ -125,6 +191,68 @@ function LockPage({ onBack }) {
   const handleBackspace = () => {
     setCode(code.slice(0, -1));
   };
+
+  if (showMemoryPage) {
+    return (
+      <div className="memory-page">
+        <div className="memory-header">
+          <h1 className="memory-title">Our Sweet Moments</h1>
+        </div>
+        
+        <div 
+          className="memory-gallery"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div className="memory-card main-card">
+            <div className="card-image couple-selfie">
+              <img 
+                src={require(`./images/${memoryImages[currentImageIndex]}`)} 
+                alt="Aiden & Lu" 
+                className="memory-photo" 
+              />
+            </div>
+
+          </div>
+          
+          <div className="memory-card stacked-card card-1">
+            <div className="card-image nature">
+              <img 
+                src={require(`./images/${memoryImages[(currentImageIndex + 1) % memoryImages.length]}`)} 
+                alt="Memory 1" 
+                className="memory-photo" 
+              />
+            </div>
+          </div>
+          
+          <div className="memory-card stacked-card card-2">
+            <div className="card-image beige">
+              <img 
+                src={require(`./images/${memoryImages[(currentImageIndex + 2) % memoryImages.length]}`)} 
+                alt="Memory 2" 
+                className="memory-photo" 
+              />
+            </div>
+          </div>
+        </div>
+        
+        <div className="memory-navigation">
+          <button className="nav-button prev-button" onClick={prevImage}>
+            ‹
+          </button>
+          <div className="image-counter">
+            {currentImageIndex + 1} / {memoryImages.length}
+          </div>
+          <button className="nav-button next-button" onClick={nextImage}>
+            ›
+          </button>
+        </div>
+        
+        <button className="back-button memory-back-button" onClick={() => setShowMemoryPage(false)}>Back to Menu</button>
+      </div>
+    );
+  }
 
   if (showLoveCalendar) {
     return (
@@ -195,7 +323,7 @@ function LockPage({ onBack }) {
         </div>
         
         <div className="menu-grid">
-          <div className="menu-card">
+          <div className="menu-card" onClick={() => setShowMemoryPage(true)}>
             <div className="card-icon">📷</div>
             <h3 className="card-title">Our Memories ❤️</h3>
             <p className="card-description">Every precious moment with you</p>
@@ -365,3 +493,4 @@ function App() {
 }
 
 export default App;
+
