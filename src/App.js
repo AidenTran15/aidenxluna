@@ -281,6 +281,12 @@ function LockPage({ onBack }) {
             </div>
           </div>
           
+
+          
+          <div className="love-message">
+            <div className="message-line">We've been in love for..</div>
+          </div>
+          
           <div className="love-counter">
             <div className="counter-row">
               <div className="counter-item">
@@ -310,10 +316,7 @@ function LockPage({ onBack }) {
             </div>
           </div>
           
-          <div className="love-message">
-            <div className="message-line">We've been in love for..</div>
-            <div className="love-signature">❤️ love u 3000 no ❤️</div>
-          </div>
+          
         </div>
         
         <button className="back-button calendar-back-button" onClick={() => setShowLoveCalendar(false)}>Back to Menu</button>
