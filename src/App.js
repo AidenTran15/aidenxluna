@@ -263,10 +263,21 @@ function LockPage({ onBack }) {
         </div>
         
         <div className="calendar-content">
-          <div className="profile-circle">
-            <div className="profile-image">
-              <div className="scood-banner">SCOOD</div>
-              <div className="couple-photo">Aiden & Lu</div>
+          <div className="profile-circles">
+            <div className="profile-circle aiden-circle">
+              <div className="profile-image">
+                <div className="profile-photo">
+                  <img src={require('./images/Aiden.JPEG')} alt="Aiden" />
+                </div>
+              </div>
+            </div>
+            
+            <div className="profile-circle luna-circle">
+              <div className="profile-image">
+                <div className="profile-photo">
+                  <img src={require('./images/Luna.JPEG')} alt="Luna" />
+                </div>
+              </div>
             </div>
           </div>
           

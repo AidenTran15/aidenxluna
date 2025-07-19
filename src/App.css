@@ -789,18 +789,33 @@
   width: 100%;
 }
 
+.profile-circles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
 .profile-circle {
-  width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 30px;
   box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
   position: relative;
   overflow: hidden;
+}
+
+.aiden-circle {
+  background: linear-gradient(45deg, #4CAF50, #8BC34A);
+}
+
+.luna-circle {
+  background: linear-gradient(45deg, #E91E63, #F48FB1);
 }
 
 .profile-image {
@@ -826,11 +841,20 @@
   font-weight: bold;
 }
 
-.couple-photo {
-  font-size: 1rem;
-  color: #333;
-  font-weight: 500;
-  margin-top: 20px;
+.profile-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .love-counter {
@@ -1182,6 +1206,10 @@
     font-size: 2.5rem;
   }
   
+  .profile-circles {
+    gap: 20px;
+  }
+  
   .profile-circle {
     width: 120px;
     height: 120px;
@@ -1190,6 +1218,11 @@
   .profile-image {
     width: 110px;
     height: 110px;
+  }
+  
+  .profile-photo {
+    width: 120px;
+    height: 120px;
   }
   
   .counter-number {
@@ -1220,6 +1253,10 @@
     font-size: 2rem;
   }
   
+  .profile-circles {
+    gap: 15px;
+  }
+  
   .profile-circle {
     width: 100px;
     height: 100px;
@@ -1230,13 +1267,9 @@
     height: 90px;
   }
   
-  .scood-banner {
-    font-size: 0.6rem;
-    padding: 1px 6px;
-  }
-  
-  .couple-photo {
-    font-size: 0.8rem;
+  .profile-photo {
+    width: 100px;
+    height: 100px;
   }
   
   .counter-number {
