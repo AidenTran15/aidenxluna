@@ -374,11 +374,8 @@ function LockPage({ onBack }) {
   return (
     <div className="lock-page">
       <div className="image-section">
-        <div className="couple-image">
-          <div className="image-placeholder">
-            <div className="image-text">Aiden & Lu</div>
-            <div className="image-subtext">Your beautiful photo here</div>
-          </div>
+        <div className="couple-image" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+          <img src={require('./images/IMG_9383.PNG')} alt="Aiden & Lu" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '20px', boxShadow: '0 4px 15px rgba(0,0,0,0.15)' }} />
         </div>
       </div>
       <div className="content-section">
